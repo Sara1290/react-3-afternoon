@@ -23,20 +23,22 @@ class App extends Component {
   
   componentDidMount() {
     axios.get('https://practiceapi.devmountain.com/api/posts')
-    .then( results => { this.setState({ posts: results.data })
+    .then( results => { this.setState({ 
+      posts: results.data 
+    })
   })
   .catch(error => console.log(error))
 }
 
   updatePost(id, text) {
-    axios.put(`https://practiceapi.devmountain.com/api/posts${id}, ${text}`)
+    axios.put(`https://practiceapi.devmountain.com/api/posts?id=${id}`, {text})
     .then( results => {this.setState({ posts: results.data })
   })
   .catch(error => console.log(error))
   }
 
   deletePost( id ) {
-    axios.delete(`https://practiceapi.devmountain.com/api/posts${id}`)
+    axios.delete(`https://practiceapi.devmountain.com/api/posts?id=${id}`)
     .then( results => {this.setState({ posts: results.data })
   })
   .catch(error => console.log(error))
@@ -45,7 +47,9 @@ class App extends Component {
                         //this one instead of paramaters we used the body way to get something from an API//
   createPost( text ) {
     axios.delete('https://practiceapi.devmountain.com/api/posts', {text})
-    .then( results => {this.setState({ posts: results.data })
+    .then( results => {this.setState({ 
+      posts: results.data 
+    })
   })
   .catch(error => console.log(error))
   }
