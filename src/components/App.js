@@ -44,14 +44,10 @@ class App extends Component {
   .catch(error => console.log(error))
   }
 
-                        //this one instead of paramaters we used the body way to get something from an API//
   createPost( text ) {
-    axios.delete('https://practiceapi.devmountain.com/api/posts', {text})
-    .then( results => {this.setState({ 
-      posts: results.data 
-    })
-  })
-  .catch(error => console.log(error))
+    axios.post('https://practiceapi.devmountain.com/api/posts', { text }).then( results => {
+      this.setState({ posts: results.data });
+    });
   }
 
   render() {
